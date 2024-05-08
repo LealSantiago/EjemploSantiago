@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar/Editar Universidad</title>
+</head>
+<body>
+<h1 th:text="${universidad.id} ? 'Editar Universidad' : 'Agregar Universidad'">Editar/Agregar Universidad</h1>
+<form th:action="@{/universidades/guardar}" th:object="${universidad}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <div>
+        <label for="nombre">Nombre:</label>
+        <input type="text" th:field="*{nombre}" required />
+    </div>
+    <div>
+        <label for="ciudad">Ciudad:</label>
+        <input type="text" th:field="*{ciudad}" required />
+    </div>
+    <div>
+        <label for="numeroDeEstudiantes">Número de Estudiantes:</label>
+        <input type="number" th:field="*{numeroDeEstudiantes}" required />
+    </div>
+    <div>
+        <label for="añoDeFundacion">Año de Fundación:</label>
+        <input type="number" th:field="*{añoDeFundacion}" required />
+    </div>
+    <div>
+        <button type="submit">Guardar</button>
+    </div>
+</form>
+<a href="/universidades">Volver a la Lista</a>
+</body>
+</html>

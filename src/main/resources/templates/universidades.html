@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Universidades</title>
+</head>
+<body>
+<h1>Universidades</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Ciudad</th>
+        <th>Número de Estudiantes</th>
+        <th>Año de Fundación</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="universidad : ${universidades}">
+        <td th:text="${universidad.id}">ID</td>
+        <td th:text="${universidad.nombre}">Nombre</td>
+        <td th:text="${universidad.ciudad}">Ciudad</td>
+        <td th:text="${universidad.numeroDeEstudiantes}">Número de Estudiantes</td>
+        <td th:text="${universidad.añoDeFundacion}">Año de Fundación</td>
+        <td>
+            <a th:href="@{/universidades/editar/{id}(id=${universidad.id})}">Editar</a>
+            <a th:href="@{/universidades/eliminar/{id}(id=${universidad.id})}" onclick="return confirm('¿Estás seguro de querer eliminar esta universidad?');">Eliminar</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a href="/universidades/nuevo">Agregar Nueva Universidad</a>
+</body>
+</html>
